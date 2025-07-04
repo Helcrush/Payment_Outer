@@ -6,16 +6,40 @@
   <title>Payment_Outer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <style>
+    .rainbow-text {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      background-image: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+      );
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+  </style>
 <body>
   <div class="container">
     <div class="payment-card">
-      <h5>
-*•·.·´`·.·• ᥕᥱᥣᥴ᥆꧑ᥱ •·.·´`·.·•*
-*⋆ . °•｡˚☽˚|.·::·.|˚☾˚｡•° . ⋆*
-    │    │      │      │    │
-    ☤    ✶      𖤝      ❦    𖤝     
-</h5>
-
+<div class="rainbow-text">Halo Dunia Warna-Warni!</div>
       <h3>Silahkan Pilih Metode Pembayaran</h3>
       <div class="payment-options">
         <div class="payment-option" id="qris-payment">
