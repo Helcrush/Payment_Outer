@@ -1,145 +1,448 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Pembayaran via DANA</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #2D2DFF, #00C2FF);
-      color: white;
-      overflow-x: hidden;
-      animation: fadeIn 1s ease-in-out;
+
+
+
+    .rainbow-text {
+
+
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+      text-align: center;
+
+      background-image: linear-gradient(
+
+        45deg,
+
+        red,
+
+        orange,
+
+        yellow,
+
+        green,
+
+        cyan,
+
+        blue,
+
+        violet
+
+      );
+
+      background-size: 400%;
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      animation: rainbow 5s linear infinite;
+
     }
+
+
+
+    @keyframes rainbow {
+
+      0% {
+
+        background-position: 0% 50%;
+
+      }
+
+      100% {
+
+        background-position: 100% 50%;
+
+      }
+
+    }
+
+  </style>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: 'Segoe UI', sans-serif;
+
+      color: white;
+
+      overflow-x: hidden;
+
+      animation: fadeIn 1s ease-in-out;
+
+    }
+
+
 
     @keyframes fadeIn {
+
       from { opacity: 0; transform: translateY(20px); }
+
       to { opacity: 1; transform: translateY(0); }
+
     }
+
+
 
     .container {
+
       max-width: 400px;
+
       margin: 60px auto;
+
       padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
+
       border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
       text-align: center;
+
       animation: slideIn 1s ease-in-out;
+
     }
+
+
 
     @keyframes slideIn {
+
       0% { transform: translateY(-30px); opacity: 0; }
+
       100% { transform: translateY(0); opacity: 1; }
+
     }
+
+
 
     .logo {
+
       width: 100px;
+
       margin-bottom: 20px;
+
       animation: bounce 2s infinite;
+
     }
+
+
 
     @keyframes bounce {
+
       0%, 100% { transform: translateY(0); }
+
       50% { transform: translateY(-10px); }
+
     }
+
+
 
     .title {
+
       font-size: 24px;
+
       font-weight: bold;
+
       margin-bottom: 10px;
+
       animation: fadeInText 1s ease-out 0.5s forwards;
+
       opacity: 0;
+
     }
+
+
 
     @keyframes fadeInText {
+
       to { opacity: 1; }
+
     }
+
+
 
     .desc {
+
       font-size: 16px;
+
       margin-bottom: 30px;
-      color: #e0e0e0;
+
+      
+
       animation: fadeInText 1s ease-out 0.7s forwards;
+
       opacity: 0;
+
     }
+
+
 
     .dana-number {
+
       font-size: 20px;
+
       font-weight: bold;
+
       background: rgba(255,255,255,0.2);
+
       padding: 15px;
+
       border-radius: 10px;
+
       display: inline-block;
+
       margin-bottom: 15px;
+
       user-select: all;
+
     }
+
+
 
     .copy-btn {
+
       background-color: #ffffff;
-      color: #2D2DFF;
+
+      color: #000000;
+
       border: none;
+
       padding: 10px 20px;
+
       border-radius: 8px;
+
       font-weight: bold;
+
       cursor: pointer;
+
       transition: background-color 0.3s;
+
     }
+
+
 
     .copy-btn:hover {
+
       background-color: #d1d1ff;
+
     }
+
+
 
     .note {
+
       margin-top: 20px;
+
       font-size: 14px;
-      color: #cccccc;
+
+      
+
       animation: fadeInText 1s ease-out 1s forwards;
+
       opacity: 0;
+
     }
+
+
 
     footer {
-      background: linear-gradient(135deg, #2d2dff, #00c2ff);
+
       color: white;
+
       padding: 20px;
+
       text-align: center;
+
       font-size: 14px;
+
     }
+
+
 
     footer a {
-      color: #00c2ff;
+
+      
+
       text-decoration: none;
+
       margin: 0 10px;
+
     }
+
+
 
     footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="https://files.catbox.moe/6jtvll.png" alt="Logo DANA" class="logo"/>
-    <div class="title">Transfer ke Nomor DANA</div>
-    <div class="desc">Silakan salin nomor DANA di bawah ini dan lakukan pembayaran manual.</div>
-    <div class="dana-number" id="danaNumber">0823 1212 1080</div>
-    <br>
-    <button class="copy-btn" onclick="copyDANA()">Salin Nomor</button>
-    <div class="note">Pastikan nominal sudah sesuai sebelum melakukan pembayaran.</div>
-  </div>
 
-  <footer>&copy; 2025 DANA Payment - Outer.</footer>
+      text-decoration: underline;
+
+    }
+
+  </style>
+
+   <style>
+
+
+
+    body, html {
+
+
+
+      margin: 0;
+
+      padding: 0;
+
+      height: 100%;
+
+      overflow: hidden;
+
+    }
+
+
+
+    video.bg-video {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      min-width: 100%;
+
+      min-height: 100%;
+
+      object-fit: cover;
+
+      z-index: -1;
+
+    }
+
+
+
+    .overlay {
+
+      position: fixed;
+
+      text-align: center;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: 1;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+  </style>
+
+</head>
+
+<body>
+
+    <!-- Video Background -->
+
+
+
+  <video id="backgroundVideo" class="bg-video" autoplay muted loop>
+
+
+
+    <source src="https://files.cloudkuimages.guru/videos/eswtBSFa.mp4" type="video/mp4">
+
+    Browser kamu tidak mendukung video.
+
+  </video>
+
+  <div class="overlay" onclick="aktifkanSuara()">🗣️ 𝙎𝙞𝙡𝙖𝙝𝙠𝙖𝙣 𝙋𝙚𝙣𝙘𝙚𝙩 𝙐𝙣𝙩𝙪𝙠 𝙈𝙚𝙡𝙖𝙣𝙟𝙪𝙩𝙠𝙖𝙣</div>
+
+
 
   <script>
-    function copyDANA() {
-      const number = document.getElementById("danaNumber").textContent;
-      navigator.clipboard.writeText(number).then(() => {
-        alert("Nomor DANA disalin!");
-      });
+
+    function aktifkanSuara() {
+
+      const video = document.getElementById("backgroundVideo");
+
+      video.muted = false;
+
+      video.play();
+
+      document.querySelector('.overlay').style.display = 'none';
+
     }
+
   </script>
+
+  <div class="container">
+
+    <img src="https://files.catbox.moe/6jtvll.png" alt="Logo DANA" class="logo"/>
+
+      <div class="rainbow-text">𝙏𝙧𝙖𝙣𝙨𝙛𝙚𝙧 𝙑𝙞𝙖 𝘿𝙖𝙣𝙖</div>
+
+    <div class="desc">𝙎𝙞𝙡𝙖𝙠𝙖𝙣 𝙎𝙖𝙡𝙞𝙣 𝙉𝙤𝙢𝙤𝙧 𝘿𝙖𝙣𝙖 𝘿𝙞𝙗𝙖𝙬𝙖𝙝 𝘿𝙖𝙣 𝙇𝙖𝙠𝙪𝙠𝙖𝙣 𝙋𝙚𝙢𝙗𝙖𝙮𝙖𝙧𝙖𝙣 𝙈𝙖𝙣𝙪𝙖𝙡.</div>
+
+    <div class="dana-number" id="danaNumber">082312121080</div>
+
+    <br>
+
+    <button class="copy-btn" onclick="copyDANA()">𝙎𝙖𝙡𝙞𝙣 𝙉𝙤𝙢𝙤𝙧</button>
+
+    <div class="note">𝙋𝙖𝙨𝙩𝙞𝙠𝙖𝙣 𝙉𝙤𝙢𝙞𝙣𝙖𝙡 𝙎𝙪𝙙𝙖𝙝 𝙎𝙚𝙨𝙪𝙖𝙞 𝙎𝙚𝙗𝙚𝙡𝙪𝙢 𝙈𝙚𝙡𝙖𝙠𝙪𝙠𝙖𝙣 𝙋𝙚𝙢𝙗𝙖𝙮𝙖𝙧𝙖𝙣.</div>
+
+  </div>
+
+
+
+<footer>&copy; 2024-2025 𝙊𝙪𝙩𝙚𝙧. | 𝘼𝙡𝙡 𝙍𝙞𝙜𝙝𝙩 𝙍𝙚𝙨𝙚𝙧𝙫𝙚𝙙</footer>
+
+
+
+  <script>
+
+    function copyDANA() {
+
+      const number = document.getElementById("danaNumber").textContent;
+
+      navigator.clipboard.writeText(number).then(() => {
+
+        alert("𝙉𝙤𝙢𝙤𝙧 𝘿𝙖𝙣𝙖 𝙏𝙚𝙡𝙖𝙝 𝘿𝙞𝙨𝙖𝙡𝙞𝙣");
+
+      });
+
+    }
+
+  </script>
+
 </body>
+
 </html>
+
