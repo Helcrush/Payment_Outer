@@ -52,9 +52,9 @@ body {
 
   max-width: 600px;
 
-  margin: 10px auto;
+  margin: 5px auto;
 
-  padding: 10px;
+  padding: 5px;
 
   text-align: center;
 
@@ -134,7 +134,7 @@ body {
 
   padding: 20px;
 
-  width: 200px;
+  width: 150px;
 
   transition: transform 0.3s, box-shadow 0.3s;
 
