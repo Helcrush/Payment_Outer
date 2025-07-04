@@ -1,74 +1,249 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payment_Outer</title>
+
+  <title>Helcrush Payment</title>
+
   <link rel="stylesheet" href="style.css" />
+
 </head>
-  <style>
+
+<style>
+
     .rainbow-text {
-      font-size: 48px;
+
+      font-size: 22px;
+
       font-weight: bold;
+
       text-align: center;
+
       background-image: linear-gradient(
+
         45deg,
+
         red,
+
         orange,
+
         yellow,
+
         green,
+
         cyan,
+
         blue,
+
         violet
+
       );
+
       background-size: 400%;
+
       -webkit-background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
       animation: rainbow 5s linear infinite;
+
     }
+
+
 
     @keyframes rainbow {
+
       0% {
+
         background-position: 0% 50%;
+
       }
+
       100% {
+
         background-position: 100% 50%;
+
       }
+
     }
+
   </style>
+
+    <style>
+
+    body, html {
+
+      margin: 0;
+
+      padding: 0;
+
+      height: 100%;
+
+      overflow: hidden;
+
+    }
+
+
+
+    video.bg-video {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      min-width: 100%;
+
+      min-height: 100%;
+
+      object-fit: cover;
+
+      z-index: -1;
+
+    }
+
+
+
+    .overlay {
+
+      position: fixed;
+
+      text-align: center;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      z-index: 1;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+  </style>
+
+</head>
+
 <body>
+
+
+
+  <!-- Video Background -->
+
+  <video id="backgroundVideo" class="bg-video" autoplay muted loop>
+
+    <source src="https://files.cloudkuimages.guru/videos/eswtBSFa.mp4" type="video/mp4">
+
+    Browser kamu tidak mendukung video.
+
+  </video>
+
+  <div class="overlay" onclick="aktifkanSuara()">🗣️ 𝙎𝙞𝙡𝙖𝙝𝙠𝙖𝙣 𝙋𝙚𝙣𝙘𝙚𝙩 𝙐𝙣𝙩𝙪𝙠 𝙈𝙚𝙡𝙖𝙣𝙟𝙪𝙩𝙠𝙖𝙣</div>
+
+
+
+  <script>
+
+    function aktifkanSuara() {
+
+      const video = document.getElementById("backgroundVideo");
+
+      video.muted = false;
+
+      video.play();
+
+      document.querySelector('.overlay').style.display = 'none';
+
+    }
+
+  </script>
+
+<body>
+
   <div class="container">
+
     <div class="payment-card">
-<div class="rainbow-text">✨ 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙏𝙤 𝙋𝙖𝙮𝙢𝙚𝙣𝙩 𝙊𝙪𝙩𝙚𝙧 ✨</div>
-      <h3>☄ 𝙎𝙞𝙡𝙖𝙝𝙠𝙖𝙣 𝙋𝙞𝙡𝙞𝙝 𝙈𝙚𝙩𝙤𝙙𝙚 𝙋𝙚𝙢𝙗𝙖𝙮𝙖𝙧𝙖𝙣 ☄</h3>
+
+      <div class="rainbow-text">✨ 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙏𝙤 𝙋𝙖𝙮𝙢𝙚𝙣𝙩 𝙊𝙪𝙩𝙚𝙧 ✨</div>
+
+      <h4>☄ 𝙎𝙞𝙡𝙖𝙝𝙠𝙖𝙣 𝙋𝙞𝙡𝙞𝙝 𝙈𝙚𝙩𝙤𝙙𝙚 𝙋𝙚𝙢𝙗𝙖𝙮𝙖𝙧𝙖𝙣 ☄</h4>
+
       <div class="payment-options">
+
         <div class="payment-option" id="qris-payment">
+
           <img
+
             src="https://files.cloudkuimages.guru/images/wRhv1DZb.jpg"
+
             alt="QRIS Logo"
+
           />
-          <button onclick="startQRISPayment()">Bayar dengan QRIS</button>
+
+          <button onclick="startQRISPayment()">𝙌𝙧𝙞𝙨</button>
+
         </div>
+
         <div class="payment-option" id="dana-payment">
+
           <img
+
             src="https://files.cloudkuimages.guru/images/1e7QH9pv.jpg"
+
             alt="DANA Logo"
+
           />
-          <button onclick="startDanaPayment()">Bayar dengan DANA</button>
+
+          <button onclick="startDanaPayment()">𝘿𝙖𝙣𝙖</button>
+
         </div>
+
         <div class="payment-option" id="gopay-payment">
+
           <img
+
             src="https://files.cloudkuimages.guru/images/BjUvlips.jpg"
+
             alt="GOPAY Logo"
+
           />
-          <button onclick="startGopayPayment()">Bayar dengan GOPAY</button>
+
+          <button onclick="startGopayPayment()">𝙂𝙤𝙥𝙖𝙮</button>
+
         </div>
-        <h4>Kirim Bukti Transfer, Jika Tidak Mengirim Tidak Akan Di Proses, Sudah Transfer Harap Sabar Jangan Spam, Jika Terjadi Salah Transfer Outer Tidak Akan Bertanggung Jawab.</h4>
+
       </div>
+
     </div>
+
   </div>
-  <footer>&copy; 2025 Outer. All Right Reserved.  </footer>
+
+<h3 class="container">𝙉𝙤𝙩𝙚 :</h3>
+
+<h3 class="container">𝙆𝙞𝙧𝙞𝙢 𝘽𝙪𝙠𝙩𝙞 𝙏𝙧𝙖𝙣𝙨𝙛𝙚𝙧, 𝙅𝙞𝙠𝙖 𝙏𝙞𝙙𝙖𝙠 𝙈𝙚𝙣𝙜𝙞𝙧𝙞𝙢 𝙏𝙞𝙙𝙖𝙠 𝘼𝙠𝙖𝙣 𝘿𝙞 𝙋𝙧𝙤𝙨𝙚𝙨, 𝙎𝙪𝙙𝙖𝙝 𝙏𝙧𝙖𝙣𝙨𝙛𝙚𝙧 𝙃𝙖𝙧𝙖𝙥 𝙎𝙖𝙗𝙖𝙧 𝙅𝙖𝙣𝙜𝙖𝙣 𝙎𝙥𝙖𝙢, 𝙅𝙞𝙠𝙖 𝙏𝙚𝙧𝙟𝙖𝙙𝙞 𝙎𝙖𝙡𝙖𝙝 𝙏𝙧𝙖𝙣𝙨𝙛𝙚𝙧 𝙊𝙪𝙩𝙚𝙧 𝙏𝙞𝙙𝙖𝙠 𝘼𝙠𝙖𝙣 𝘽𝙚𝙧𝙩𝙖𝙣𝙜𝙜𝙪𝙣𝙜 𝙅𝙖𝙬𝙖𝙗..</h3>
+
+<footer>&copy; 2024-2025 𝙊𝙪𝙩𝙚𝙧. | 𝘼𝙡𝙡 𝙍𝙞𝙜𝙝𝙩 𝙍𝙚𝙨𝙚𝙧𝙫𝙚𝙙</footer>
 
   <script src="script.js"></script>
+
 </body>
+
 </html>
